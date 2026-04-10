@@ -7,6 +7,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('Homepage') }}">Homepage</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('servizi') }}">servizi</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('chisiamo') }}">indice</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">contattaci</a></li>
                 </ul>
             </div>
         </div>

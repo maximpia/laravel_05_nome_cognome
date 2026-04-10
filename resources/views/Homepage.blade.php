@@ -23,6 +23,13 @@
                     <p class="text-white-75 mb-4">Dai grandi classici alle ultime novità, qui trovi film capaci di emozionare, divertire e sorprendere. Lasciati trasportare dalle storie e scegli il film perfetto per la tua serata!</p>
                     <a class="btn btn-light btn-xl" href="{{ route('chisiamo') }}">scoprilo!</a>
                 </div>
+
+                
+                 @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
             </div>
         </div>
     </section>

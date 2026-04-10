@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PublicController extends Controller
 {
@@ -155,6 +157,24 @@ Public function movies () {
 
 
 
+ Public function contact () {
+    return view('contact');
+}
 
+
+Public function submit (Request $request) {
+    $name = $request->input('name');
+    $email = $request->input('email');
+    $tel = $request->input('tel');
+    $usermessage = $request->input('usermessage');
+    
+    
+    
+    Mail:: to($email)->send(new ContactMail($name,$email,$usermessage, $tel));
+    
+    return redirect()->route('Homepage')->with('status', 'mail inviata con successo');
+
+
+}
 
 }
