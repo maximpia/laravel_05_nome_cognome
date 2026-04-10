@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Movie;
 
 class PublicController extends Controller
 {
@@ -163,14 +164,16 @@ Public function movies () {
 
 
 Public function submit (Request $request) {
-    $name = $request->input('name');
-    $email = $request->input('email');
-    $tel = $request->input('tel');
-    $usermessage = $request->input('usermessage');
+    $movie = new movie();
+    $movie->name = $request->input('name');
+    $movie->email = $request->input('email');
+    $movie->tel = $request->input('tel');
+    $movie->message = $request->input('usermessage');
+    $movie->SAVE();
     
     
     
-    Mail:: to($email)->send(new ContactMail($name,$email,$usermessage, $tel));
+    Mail:: to($movie->email)->send(new ContactMail($movie->name,$movie->email,$movie->usermessage, $movie->tel));
     
     return redirect()->route('Homepage')->with('status', 'mail inviata con successo');
 
